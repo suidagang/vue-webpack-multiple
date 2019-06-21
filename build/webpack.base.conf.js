@@ -66,11 +66,6 @@ module.exports = {
             },
         ]
     },
-    //   optimization: {
-    //     splitChunks: {
-    //         chunks: "all",
-    //     }
-    //   },
     // optimization: {
     //     splitChunks: {
     //         chunks: 'all', // 控制webpack选择哪些代码块用于分割（其他类型代码块按默认方式打包）。有3个可选的值：initial、async和all。

@@ -7,7 +7,7 @@ module.exports = {
     mode: 'production',
     entry: {
         // 将 lodash 模块作为入口编译成动态链接库
-        vendor: ['vue/dist/vue.esm.js','vue-router','axios','vuex']
+        vendor: ['element-ui','vue/dist/vue.esm.js','vue-router','axios','vuex']
     },
     output: {
         // 指定生成文件所在目录
