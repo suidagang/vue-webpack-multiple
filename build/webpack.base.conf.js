@@ -1,16 +1,17 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== 'production';
 const webpack = require("webpack");
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const multiBuilder = require("./multipage");
+const { extraEntry, extraHtmlWebpackPlugins } = multiBuilder;
 function resolve(dir) {
     return path.join(__dirname, "..", dir);
 }
 module.exports = {
     entry: {
-        app: path.resolve(__dirname, '../src/main.js')
+        ...extraEntry
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -82,20 +83,18 @@ module.exports = {
         }
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../public/index.html')
-        }),
+        ...extraHtmlWebpackPlugins,
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: devMode ? 'static/css/[name].css' : 'static/css/[name].[hash].css',
             chunkFilename: devMode ? 'static/css/[id].css' : 'static/css/[id].[hash].css'
         }),
-        // 告诉 Webpack 使用了哪些动态链接库
+        //告诉 Webpack 使用了哪些动态链接库
         new webpack.DllReferencePlugin({
             // 描述 lodash 动态链接库的文件内容
             manifest: require('../public/vendor/vendor.manifest.json')
         }),
-        // 该插件将把给定的 JS 或 CSS 文件添加到 webpack 配置的文件中，并将其放入资源列表 html webpack插件注入到生成的 html 中。
+        //该插件将把给定的 JS 或 CSS 文件添加到 webpack 配置的文件中，并将其放入资源列表 html webpack插件注入到生成的 html 中。
         new AddAssetHtmlPlugin([
             {
                 // 要添加到编译中的文件的绝对路径，以及生成的HTML文件。支持globby字符串

@@ -7,7 +7,10 @@ const chalk = require('chalk')
 const spinner = ora('building for production...');
 spinner.start();
 rm(path.join(path.resolve(__dirname, "../dist"), 'static'), err => {
-  if (err) throw err
+  if (err){
+    throw err;
+  };
+  
   webpack(config, (err, stats) => {
     spinner.stop()
       if (err) throw err

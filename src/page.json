@@ -1,0 +1,15 @@
+{
+ 
+  "one": {
+    "path": "./src/page/one/one.js",
+    "title": "第一个页面"
+  },
+  "two": {
+    "path": "./src/page/two/two.js",
+    "title": "第二个页面"
+  },
+  "three": {
+    "path": "./src/page/three/three.js",
+    "title": "第三个页面"
+  }
+}
