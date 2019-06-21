@@ -66,22 +66,22 @@ module.exports = {
             },
         ]
     },
-    optimization: {
-        splitChunks: {
-            chunks: "all",
-            minSize: 30000, // 模块的最小体积
-            automaticNameDelimiter: '~', // 文件名的连接符
-            cacheGroups: { // 缓存组
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: 1
-                }
-            },
-        },
-        runtimeChunk: {
-            name: entrypoint => `manifest.${entrypoint.name}`
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         chunks: "all",
+    //         minSize: 30000, // 模块的最小体积
+    //         automaticNameDelimiter: '~', // 文件名的连接符
+    //         cacheGroups: { // 缓存组
+    //             vendors: {
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 priority: 1
+    //             }
+    //         },
+    //     },
+    //     runtimeChunk: {
+    //         name: entrypoint => `manifest.${entrypoint.name}`
+    //     }
+    // },
     plugins: [
         ...extraHtmlWebpackPlugins,
         new VueLoaderPlugin(),

@@ -20,7 +20,7 @@ for (let i in extraEntry) {
     new HtmlWebpackPlugin({
       filename: chunk + ".html",
       template: "public/index.html",
-      chunks: [chunk,'manifest'],
+      chunks: [chunk],
       title: extraEntry[i].title,
       favicon:'public/favicon.ico',
     })
