@@ -14,7 +14,6 @@ let newExtraEntry = {};
 let extraHtmlWebpackPlugins = [];
 for (let i in extraEntry) {
   let chunk = i;
-  console.log(chunk);
   newExtraEntry[chunk] = extraEntry[i].path;
   extraHtmlWebpackPlugins.push(
     new HtmlWebpackPlugin({
